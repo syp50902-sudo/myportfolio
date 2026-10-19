@@ -121,7 +121,15 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card project-card-featured">
+          <article
+            class="project-card project-card-featured"
+            data-project="group-buy"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="project-modal"
+            aria-label="공동구매 모바일 앱 프로젝트 상세 보기"
+          >
             <div class="project-visual visual-sprout">
               <span class="visual-label">01 — MOBILE APP</span>
 
@@ -157,13 +165,9 @@
                 <p>팀 프로젝트로 제작한 공동구매 서비스</p>
               </div>
 
-              <button
-                class="project-link"
-                type="button"
-                aria-label="공동구매 모바일 앱 프로젝트 상세 보기"
-              >
+              <span class="project-link" aria-hidden="true">
                 ↗
-              </button>
+              </span>
             </div>
 
             <div class="project-tags">
@@ -172,7 +176,15 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article
+            class="project-card"
+            data-project="re-blue"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="project-modal"
+            aria-label="RE-BLUE 프로젝트 상세 보기"
+          >
             <div class="project-visual visual-atelier">
               <span class="visual-label">02 — GAME</span>
 
@@ -192,13 +204,9 @@
                 <p>해양환경 재활용 게임</p>
               </div>
 
-              <button
-                class="project-link"
-                type="button"
-                aria-label="RE-BLUE 프로젝트 상세 보기"
-              >
+              <span class="project-link" aria-hidden="true">
                 ↗
-              </button>
+              </span>
             </div>
 
             <div class="project-tags">
@@ -206,8 +214,70 @@
               <span>Game Development</span>
             </div>
           </article>
+
+          <article
+            class="project-card"
+            data-project="study-pulse"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+            aria-controls="project-modal"
+            aria-label="학습 기록 대시보드 예시 프로젝트 상세 보기"
+          >
+            <div class="project-visual visual-pulse">
+              <span class="visual-label">03 — WEB PLATFORM · SAMPLE</span>
+              <div class="pulse-ring"></div>
+              <div class="pulse-center">PULSE<span>®</span></div>
+              <div class="pulse-lines"><i></i><i></i><i></i></div>
+            </div>
+
+            <div class="project-info">
+              <div>
+                <h3>학습 기록 대시보드 <span class="sample-label">(예시)</span></h3>
+                <p>학습 현황을 시각화하는 웹 플랫폼</p>
+              </div>
+              <span class="project-link" aria-hidden="true">↗</span>
+            </div>
+
+            <div class="project-tags">
+              <span>Sample Project</span>
+              <span>Web Platform</span>
+            </div>
+          </article>
         </div>
       </section>
+
+      <dialog
+        class="project-modal"
+        id="project-modal"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <div class="modal-content">
+          <button class="modal-close" type="button" aria-label="상세 정보 닫기">
+            <span aria-hidden="true">×</span>
+          </button>
+          <p class="section-label">Project details</p>
+          <h2 id="modal-title"></h2>
+          <p class="sample-notice">아래 상세 정보는 이해를 돕기 위한 예시이며 실제 프로젝트 정보가 아닙니다.</p>
+          <p class="modal-description" id="modal-description"></p>
+
+          <div class="modal-detail-grid">
+            <section>
+              <h3>담당 역할</h3>
+              <p id="modal-role"></p>
+            </section>
+            <section>
+              <h3>사용 기술</h3>
+              <ul class="modal-list" id="modal-technologies"></ul>
+            </section>
+            <section class="modal-outcomes">
+              <h3>주요 성과</h3>
+              <ul class="modal-list" id="modal-outcomes"></ul>
+            </section>
+          </div>
+        </div>
+      </dialog>
 
       <section class="contact-section" id="contact">
         <div class="container contact-grid">
@@ -271,7 +341,7 @@
       <span>© 2026 박서연</span>
 
       <div>
-        <a href="#">LinkedIn</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="#">GitHub</a>
         <a href="#top">Back to top ↑</a>
       </div>
