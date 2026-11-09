@@ -119,9 +119,50 @@ projectModal.addEventListener("close", () => {
 
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const formData = new FormData(contactForm);
-  const name = formData.get("name");
 
-  formStatus.textContent = `${name}님, 메시지를 확인했습니다. 곧 답변드릴게요!`;
+  const fields = [...contactForm.querySelectorAll("input[required], textarea[required]")];
+  const errors = [];
+  let firstInvalidField = null;
+
+  fields.forEach((field) => {
+    const isEmpty = field.value.trim() === "";
+    const hasInvalidEmail = field.type === "email" && !isEmpty && !field.validity.valid;
+    const isInvalid = isEmpty || hasInvalidEmail;
+
+    field.setAttribute("aria-invalid", String(isInvalid));
+
+    if (isInvalid) {
+      firstInvalidField ??= field;
+      field.setAttribute("aria-errormessage", "form-status");
+
+      if (isEmpty) {
+        errors.push(`${field.labels[0].textContent} 항목을 입력해 주세요.`);
+      } else {
+        errors.push("올바른 이메일 주소를 입력해 주세요.");
+      }
+    } else {
+      field.removeAttribute("aria-errormessage");
+    }
+  });
+
+  if (errors.length > 0) {
+    formStatus.dataset.state = "error";
+    formStatus.textContent = errors.join(" ");
+    firstInvalidField.focus();
+    return;
+  }
+
+  formStatus.dataset.state = "success";
+  formStatus.textContent = "입력 내용이 확인되었습니다. 이 페이지는 실제 이메일을 전송하지 않습니다.";
   contactForm.reset();
+});
+
+contactForm.addEventListener("input", () => {
+  formStatus.textContent = "";
+  delete formStatus.dataset.state;
+
+  contactForm.querySelectorAll("[aria-invalid='true']").forEach((field) => {
+    field.setAttribute("aria-invalid", "false");
+    field.removeAttribute("aria-errormessage");
+  });
 });

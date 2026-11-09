@@ -299,7 +299,7 @@
             </a>
           </div>
 
-          <form class="contact-form" id="contact-form">
+          <form class="contact-form" id="contact-form" novalidate>
             <label for="name">이름</label>
             <input
               id="name"
@@ -307,6 +307,8 @@
               type="text"
               placeholder="홍길동"
               required
+              aria-invalid="false"
+              aria-errormessage="form-status"
             />
 
             <label for="email">이메일</label>
@@ -316,6 +318,8 @@
               type="email"
               placeholder="hello@example.com"
               required
+              aria-invalid="false"
+              aria-errormessage="form-status"
             />
 
             <label for="message">메시지</label>
@@ -325,13 +329,15 @@
               rows="3"
               placeholder="어떤 이야기를 나누고 싶으신가요?"
               required
+              aria-invalid="false"
+              aria-errormessage="form-status"
             ></textarea>
 
             <button class="button button-light" type="submit">
-              메시지 보내기 <span>↗</span>
+              입력 내용 확인 <span>↗</span>
             </button>
 
-            <p class="form-status" id="form-status" role="status"></p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
           </form>
         </div>
       </section>
